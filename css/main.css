@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+.flex {
+  display: flex; }
+
+.grid {
+  display: grid; }
+
+.container {
+  padding-left: 2.4rem;
+  padding-right: 2.4rem; }
+  .container.container--py-m {
+    padding-top: 6.4rem;
+    padding-bottom: 6.4rem; }
+  .container.container--py-l {
+    padding-top: 8rem;
+    padding-bottom: 8rem; }
+
+.button, .button--cyan, .header__links .cta {
+  border-radius: 100px;
+  padding: 0.8rem 3.2rem;
+  cursor: pointer;
+  color: white;
+  border: 0;
+  display: inline-block;
+  font-weight: bold; }
+  .button--cyan, .header__links .cta {
+    background-color: #2acfcf; }
+  .button--block {
+    border-radius: 0.8rem; }
+
+.header .container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  justify-content: space-between; }
+
+.header__logo {
+  cursor: pointer; }
+
+.header__hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center; }
+  .header__hamburger .line {
+    width: 24px;
+    height: 4px;
+    background-color: #bfbfbf;
+    display: block; }
+    .header__hamburger .line:not(:last-child) {
+      margin-bottom: 4px; }
+
+.header__links {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: center;
+  top: 9.6rem;
+  background-color: #3b3054;
+  border-radius: 0.8rem;
+  width: calc(100% - 4.8rem);
+  padding: 2.4rem;
+  visibility: hidden;
+  opacity: 0; }
+  .header__links.active {
+    visibility: visible;
+    opacity: 1; }
+  .header__links li {
+    padding: 1.6rem 0; }
+  .header__links .login {
+    border-top: 1px solid rgba(255, 255, 255, 0.138); }
+  .header__links .cta {
+    padding: 0.8rem 0; }
+  .header__links a {
+    color: white;
+    font-size: 1.8rem; }
+
+.hero .container {
+  flex-direction: column; }
+
+.hero__text {
+  text-align: center;
+  flex-direction: column;
+  gap: 1.6rem;
+  order: 2; }
+  .hero__text .button, .hero__text .button--cyan, .hero__text .header__links .cta, .header__links .hero__text .cta {
+    align-self: center; }
+
+.hero__image {
+  order: 1; }
+
+.url .container {
+  gap: 1.6rem;
+  border-radius: 0.8rem;
+  flex-direction: column; }
+
+.url__input {
+  flex-direction: column;
+  gap: 1.6rem;
+  background-color: #3b3054;
+  padding: 2.4rem;
+  border-radius: 0.8rem;
+  background-image: url(../images/bg-shorten-mobile.svg); }
+  .url__input input[type="text"] {
+    border: 0;
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 0.8rem; }
+
+.url__output {
+  background-color: white;
+  border-radius: 0.8rem;
+  box-shadow: 0 8px 16px rgba(36, 36, 36, 0.085);
+  flex-direction: column; }
+  .url__output .card {
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 1.6rem;
+    background-color: white;
+    border-radius: 0.8rem;
+    box-shadow: 0px 16px 32px rgba(42, 42, 42, 0.149); }
+
+.statistics__content {
+  flex-direction: column;
+  text-align: center;
+  gap: 9.6rem;
+  padding-top: 8rem; }
+  .statistics__content .line {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2acfcf;
+    display: block; }
+  .statistics__content .card {
+    position: relative;
+    padding: 8rem 4rem 4rem;
+    background-color: white;
+    border-radius: 0.8rem;
+    box-shadow: 0px 16px 32px rgba(42, 42, 42, 0.149); }
+    .statistics__content .card .icon {
+      background-color: #3b3054;
+      position: absolute;
+      width: 8.8rem;
+      height: 8.8rem;
+      border-radius: 100px;
+      display: grid;
+      place-items: center;
+      top: -4.4rem;
+      transform: translateX(-50%);
+      left: 50%; }
+
+.cta .container {
+  text-align: center;
+  flex-direction: column;
+  background-color: #3b3054;
+  background-image: url(../images/bg-boost-mobile.svg); }
+
+.cta .heading {
+  color: white; }
+
+.heading {
+  line-height: 1.2;
+  font-weight: bold;
+  letter-spacing: -0.04rem;
+  color: #35323e; }
+
+.heading-1 {
+  letter-spacing: -0.1rem;
+  font-size: 4rem; }
+
+.heading-2 {
+  letter-spacing: -0.1rem;
+  font-size: 3.2rem; }
+
+.heading-3 {
+  letter-spacing: -0.1rem;
+  font-size: 2.4rem; }
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0; }
+
+html {
+  font-size: 62.5%; }
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  padding: 0; }
+
+a {
+  text-decoration: none; }
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth; }
+
+/* Set core body defaults */
+body {
+  font-size: 1.6rem;
+  color: #9e9aa7;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.6;
+  font-family: "Poppins", sans-serif; }
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto; }
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block; }
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit; }
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important; } }
