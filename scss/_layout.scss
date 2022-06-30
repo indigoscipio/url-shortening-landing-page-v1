@@ -11,6 +11,8 @@
 .container {
   padding-left: 2.4rem;
   padding-right: 2.4rem;
+  max-width: 111rem;
+  margin: 0 auto;
 
   &.container--py-m {
     padding-top: 6.4rem;
@@ -32,9 +34,19 @@
   font-weight: bold;
   text-align: center;
 
+  @include lg {
+    align-self: center;
+  }
+
   &--cyan {
     @extend .button;
     background-color: $c-p-cyan;
+
+    @include lg {
+      &:hover {
+        background-color: lighten($c-p-cyan, 30%);
+      }
+    }
   }
 
   &--block {
@@ -50,22 +62,47 @@
   }
   &__logo {
     cursor: pointer;
+
+    @include lg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   &__hamburger {
     display: flex;
     flex-direction: column;
     cursor: pointer;
     justify-content: center;
+
+    @include lg {
+      display: none;
+    }
+
     .line {
+      transition: all 0.3s ease;
       width: 24px;
       height: 4px;
       background-color: $c-g-100;
       display: block;
+      transform-origin: 0.5px 2px;
       &:not(:last-child) {
         margin-bottom: 4px;
       }
     }
+    &.active {
+      .line-1 {
+        transform: rotate(45deg);
+      }
+      .line-2 {
+        transform: scale(0);
+      }
+      .line-3 {
+        transform: rotate(-45deg);
+      }
+    }
   }
+
   &__links {
     display: flex;
     flex-direction: column;
@@ -78,14 +115,50 @@
     padding: 2.4rem;
     visibility: hidden;
     opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(-16px);
+
+    @include lg {
+      position: relative;
+      flex-direction: row;
+      opacity: 1;
+      transform: none;
+      background-color: transparent;
+      visibility: visible;
+      gap: 2.4rem;
+      font-weight: 700;
+      padding: 0;
+      border-radius: 0;
+      width: 100%;
+      margin-left: 3.2rem;
+      top: 0;
+      left: 0;
+      text-align: left;
+      align-items: center;
+      justify-content: flex-start;
+    }
 
     &.active {
       visibility: visible;
+      transform: translateY(0);
       opacity: 1;
     }
 
     li {
       padding: 1.6rem 0;
+
+      @include lg {
+        padding: 0;
+
+        &:last-child {
+          right: 0;
+          position: absolute;
+        }
+        &:nth-child(4) {
+          right: 16rem;
+          position: absolute;
+        }
+      }
     }
 
     .login {
@@ -95,11 +168,23 @@
     .cta {
       @extend .button--cyan;
       padding: 0.8rem 0;
+
+      @include lg {
+        padding: 0.8rem 2.4rem;
+      }
     }
 
     a {
       color: white;
       font-size: $fs-18;
+
+      @include lg {
+        font-size: $fs-16;
+      }
+    }
+
+    li:not(:last-child) a {
+      color: $c-g-200;
     }
   }
 }
@@ -107,7 +192,15 @@
 //Hero section
 .hero {
   .container {
+    align-items: center;
+    gap: 2.4rem;
     flex-direction: column;
+
+    @include lg {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
   }
   &__text {
     text-align: center;
@@ -115,12 +208,30 @@
     gap: 1.6rem;
     order: 2;
 
+    & > * {
+      max-width: 460px;
+    }
+
+    @include lg {
+      text-align: left;
+      flex: 1;
+      order: 1;
+    }
+
     .button {
       align-self: center;
+
+      @include lg {
+        align-self: flex-start;
+      }
     }
   }
   &__image {
     order: 1;
+    @include lg {
+      flex: 1;
+      order: 2;
+    }
   }
 }
 
@@ -138,14 +249,33 @@
     background-color: $c-p-darkviolet;
     padding: 2.4rem;
     border-radius: 0.8rem;
-
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: top right;
     background-image: url(../images/bg-shorten-mobile.svg);
+
+    @include lg {
+      flex-direction: row;
+      background-image: url(../images/bg-shorten-desktop.svg);
+    }
 
     input[type="text"] {
       border: 0;
       padding: 0.8rem;
       width: 100%;
       border-radius: 0.8rem;
+
+      @include lg {
+        flex-basis: 80%;
+        padding: 1.6rem;
+      }
+    }
+
+    .button--block {
+      @include lg {
+        flex-basis: 20%;
+        align-self: stretch;
+      }
     }
   }
 
@@ -155,10 +285,30 @@
     flex-direction: column;
 
     .loading {
-      width: 48px;
-      height: 48px;
-      animation: loading 2s ease infinite;
-      background-color: black;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.6rem;
+      margin-top: 3.2rem;
+
+      .circle {
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 100px;
+        background-color: $c-p-red;
+        animation: loading 0.3s ease-in-out infinite alternate;
+      }
+      .circle-2 {
+        animation-fill-mode: both;
+        animation-delay: 0.2s;
+      }
+
+      .circle-3 {
+        animation-fill-mode: both;
+        animation-delay: 0.4s;
+      }
     }
     .card {
       flex-direction: column;
@@ -168,6 +318,12 @@
       border-radius: 0.8rem;
       box-shadow: 0px 16px 32px rgba(42, 42, 42, 0.149);
       position: relative;
+
+      @include lg {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+      }
 
       .button.copied {
         background-color: $c-p-darkviolet;
@@ -187,6 +343,10 @@
         width: 100%;
         height: 1px;
         background-color: $c-g-100;
+
+        @include lg {
+          display: none;
+        }
       }
 
       &__link-top {
@@ -194,10 +354,17 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+
+        @include lg {
+          margin-right: auto;
+        }
       }
       &__link-bottom {
         padding-top: 0.8rem;
         color: $c-p-cyan;
+        @include lg {
+          padding-top: 0;
+        }
       }
     }
   }
@@ -205,6 +372,8 @@
 
 //Statistics
 .statistics {
+  text-align: center;
+
   .container {
   }
   &__intro {
@@ -214,15 +383,28 @@
     text-align: center;
     gap: 9.6rem;
     padding-top: 8rem;
+    position: relative;
+
+    @include lg {
+      flex-direction: row;
+      gap: 3.2rem;
+    }
 
     .line {
       position: absolute;
       width: 8px;
-      height: 100%;
+      height: 90%;
       left: 50%;
       transform: translateX(-50%);
       background-color: $c-p-cyan;
       display: block;
+
+      @include lg {
+        right: 0;
+        height: 150%;
+        top: 60%;
+        transform: translateY(-50%) rotate(90deg);
+      }
     }
 
     .card {
@@ -249,12 +431,18 @@
 }
 
 //CTA Section
-.cta {
+.call-to-action {
+  background-image: url(../images/bg-boost-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $c-p-darkviolet;
+
+  @include lg {
+    background-image: url(../images/bg-boost-desktop.svg);
+  }
   .container {
     text-align: center;
     flex-direction: column;
-    background-color: $c-p-darkviolet;
-    background-image: url(../images/bg-boost-mobile.svg);
   }
   .heading {
     color: white;
@@ -264,6 +452,7 @@
 //footer section
 .footer {
   text-align: center;
+  background-color: $c-g-400;
 
   a {
     color: $c-g-200;
@@ -275,26 +464,62 @@
 
   .container {
     gap: 4rem;
-    background-color: $c-g-400;
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
+
   &__logo {
     margin: 0 auto;
+    @include lg {
+      grid-column: 1/2;
+      margin: 0;
+      align-self: start;
+    }
   }
   &__links {
+    @include lg {
+      display: flex;
+      gap: 9.6rem;
+      text-align: left;
+      grid-column: 2/3;
+    }
+    b {
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    li {
+      line-height: 2;
+    }
+
     .link-item {
+      @include lg {
+        margin: 0;
+      }
     }
   }
   &__socials {
     justify-content: center;
     gap: 2.4rem;
+    align-self: start;
+    justify-self: end;
+
+    @include lg {
+      align-items: center;
+      grid-column: 3/4;
+    }
+    img {
+      cursor: pointer;
+    }
   }
 }
 
 @keyframes loading {
   0% {
-    transform: rotate(0);
+    transform: translateY(-75%);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translateY(75%);
   }
 }

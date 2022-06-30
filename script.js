@@ -7,6 +7,7 @@ let urlOutput = document.querySelector(".url__output");
 btnHamburger.addEventListener("click", toggleMenu);
 function toggleMenu() {
   menuContent.classList.toggle("active");
+  btnHamburger.classList.toggle("active");
 }
 
 btnSubmit.addEventListener("click", (e) => {
@@ -40,16 +41,18 @@ btnSubmit.addEventListener("click", (e) => {
   }
 
   createCard();
-});
 
-// let btnCopies = document.getElementsByClassName("button--copy");
-// [...btnCopies].forEach((button) =>
-//   button.addEventListener("click", (e) => console.log(e.target))
-// );
+  inputURL.value = "";
+});
 
 async function shortenURL() {
   let loader = document.createElement("div");
   loader.classList.add("loading");
+  loader.innerHTML = `
+  <span class="circle circle-1"></span>
+  <span class="circle circle-2"></span>
+  <span class="circle circle-3"></span>
+  `;
   urlOutput.append(loader);
 
   let response = await fetch(
@@ -61,6 +64,4 @@ async function shortenURL() {
   let data = await response.json();
   loader.remove();
   return data;
-  // console.log(data.result.original_link);
-  // console.log(data.result.full_short_link);
 }
