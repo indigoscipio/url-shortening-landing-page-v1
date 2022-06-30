@@ -22,7 +22,8 @@
   color: white;
   border: 0;
   display: inline-block;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
   .button--cyan, .header__links .cta {
     background-color: #2acfcf; }
   .button--block {
@@ -109,15 +110,42 @@
 .url__output {
   background-color: white;
   border-radius: 0.8rem;
-  box-shadow: 0 8px 16px rgba(36, 36, 36, 0.085);
   flex-direction: column; }
+  .url__output .loading {
+    width: 48px;
+    height: 48px;
+    animation: loading 2s ease infinite;
+    background-color: black; }
   .url__output .card {
     flex-direction: column;
     gap: 1.6rem;
     padding: 1.6rem;
     background-color: white;
     border-radius: 0.8rem;
-    box-shadow: 0px 16px 32px rgba(42, 42, 42, 0.149); }
+    box-shadow: 0px 16px 32px rgba(42, 42, 42, 0.149);
+    position: relative; }
+    .url__output .card .button.copied, .url__output .card .copied.button--cyan, .url__output .card .header__links .copied.cta, .header__links .url__output .card .copied.cta {
+      background-color: #3b3054;
+      color: white; }
+    .url__output .card:not(:first-of-type) {
+      margin-top: 2.4rem; }
+    .url__output .card::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #bfbfbf; }
+    .url__output .card__link-top {
+      color: #232127;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+    .url__output .card__link-bottom {
+      padding-top: 0.8rem;
+      color: #2acfcf; }
 
 .statistics__content {
   flex-direction: column;
@@ -158,6 +186,27 @@
 
 .cta .heading {
   color: white; }
+
+.footer {
+  text-align: center; }
+  .footer a {
+    color: #9e9aa7; }
+  .footer b {
+    color: white; }
+  .footer .container {
+    gap: 4rem;
+    background-color: #232127; }
+  .footer__logo {
+    margin: 0 auto; }
+  .footer__socials {
+    justify-content: center;
+    gap: 2.4rem; }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 
 .heading {
   line-height: 1.2;

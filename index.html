@@ -53,16 +53,27 @@
 
     <section class="url">
       <div class="container flex container--py-m">
-        <div class="url__input flex">
-          <input type="text" placeholder="Shorten a link here..." />
-          <button class="button button--block button--cyan">Shorten it!</button>
-        </div>
+        <form id="input-form" class="url__input flex">
+          <input
+            id="input-url"
+            type="text"
+            placeholder="Shorten a link here..."
+          />
+          <button
+            id="button-submit"
+            type="submit"
+            class="button button--block button--cyan"
+          >
+            Shorten it!
+          </button>
+        </form>
         <div class="url__output flex">
-          <div class="card flex">
+          <!-- <div class="loading"></div> -->
+          <!-- <div class="card flex">
             <div class="card__link-top">Https Link Original</div>
             <div class="card__link-bottom">Https Link Shorten</div>
-            <div class="button button--cyan">Copy</div>
-          </div>
+            <div class="button button--block button--cyan copied">Copy</div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -145,7 +156,7 @@
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
-        <div class="footer__socials">
+        <div class="footer__socials flex">
           <img src="images/icon-facebook.svg" alt="" />
           <img src="images/icon-twitter.svg" alt="" />
           <img src="images/icon-pinterest.svg" alt="" />
